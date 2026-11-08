@@ -21,9 +21,8 @@ function updateBGWindow() {
     info.Title || vpx.filename || table.tableDirName || "Unknown Table";
 
   const bgImageUrl = vpin.getImageURL(currentTableIndex, "bg");
-  const bgVideoUrl = vpin.getVideoURL(currentTableIndex, "bg");
 
-  if (!hasUsableMedia(bgVideoUrl) && !hasUsableMedia(bgImageUrl)) {
+  if (!hasUsableMedia(bgImageUrl)) {
     container.innerHTML = '<div class="empty-state">No BG Media</div>';
     return;
   }
@@ -37,7 +36,7 @@ function updateBGWindow() {
   container.innerHTML = "";
 
   const mediaElement = createMediaElement(
-    bgVideoUrl,
+    null,
     bgImageUrl,
     title,
     "contain",

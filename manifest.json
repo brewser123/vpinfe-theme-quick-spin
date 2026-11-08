@@ -1,10 +1,10 @@
 {
-  "name": "Trifecta",
-  "version": "1.6.1",
-  "author": "emb417",
-  "description": "3-screen cab theme optimized for videos on all screens. Plus Attract Mode with Audio! The best popper replacement for VPinFE.",
+  "name": "Quick Spin",
+  "version": "0.2.4",
+  "author": "Quick Spin contributors (based on Trifecta by emb417)",
+  "description": "Forked from Trifecta by emb417. Fast cabinet carousel with still playfield and backglass previews, most-played sorting, and optional rotated loading images or animated GIFs.",
   "preview_image": "preview.png",
   "supported_screens": 3,
   "type": "cab",
-  "change_log": "Fix for launching table window in focus on windows startup."
+  "change_log": "Added explicit Trifecta and emb417 credit to the theme description and README."
 }

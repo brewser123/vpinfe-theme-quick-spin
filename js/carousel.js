@@ -1,6 +1,6 @@
 /**
  * Carousel
- * Wheel carousel rendering and animation
+ * Fast wheel carousel rendering
  */
 
 function createWheelTrack() {
@@ -20,7 +20,9 @@ function renderWheelCarousel(track, centerIndex) {
 
   cards.forEach((card) => {
     const offset = Number(card.dataset.offset || 0);
-    const index = wrapIndex(centerIndex + offset, vpin.getTableCount());
+    if (tableOrder.length !== vpin.getTableCount()) rebuildTableOrder();
+    const position = tableOrder.indexOf(centerIndex);
+    const index = tableOrder[wrapIndex(Math.max(0, position) + offset, tableOrder.length)];
     const table = vpin.getTableMeta(index);
     const info = table.meta.Info || {};
     const vpx = table.meta.VPXFile || {};
@@ -79,93 +81,7 @@ function renderWheelCarousel(track, centerIndex) {
   });
 }
 
-function getWheelStep(track) {
-  const cards = Array.from(track.children);
-  if (cards.length < 2) return 0;
-  const first = cards[0];
-  const second = cards[1];
-  return second.offsetLeft - first.offsetLeft;
-}
-
 function updateWheelCarousel(view) {
-  const carousel = view.wheelCarousel;
-  let track = view.wheelTrack;
-  if (view.wheelTrackResetTimer) {
-    clearTimeout(view.wheelTrackResetTimer);
-    view.wheelTrackResetTimer = null;
-  }
-
-  const existingTracks = Array.from(carousel.querySelectorAll(".wheel-track"));
-  existingTracks.forEach((existingTrack) => {
-    existingTrack.getAnimations().forEach((animation) => animation.cancel());
-    existingTrack.classList.remove("wheel-track-transition");
-    existingTrack.style.transform = "";
-    existingTrack.style.zIndex = "";
-    if (existingTrack !== track) {
-      existingTrack.remove();
-    }
-  });
-
-  const canAnimate =
-    lastRenderedTableIndex !== -1 &&
-    lastWheelMoveDirection !== 0 &&
-    vpin.getTableCount() > 1;
-
-  if (!canAnimate) {
-    renderWheelCarousel(track, currentTableIndex);
-    return;
-  }
-
-  renderWheelCarousel(track, lastRenderedTableIndex);
-  const step = getWheelStep(track);
-  if (!step) {
-    renderWheelCarousel(track, currentTableIndex);
-    return;
-  }
-
-  const incomingTrack = createWheelTrack();
-  renderWheelCarousel(incomingTrack, currentTableIndex);
-  incomingTrack.classList.add("wheel-track-transition");
-  incomingTrack.style.zIndex = "2";
-  track.classList.add("wheel-track-transition");
-  track.style.zIndex = "1";
-  carousel.appendChild(incomingTrack);
-
-  const outgoingDelta = lastWheelMoveDirection > 0 ? -step : step;
-  const incomingStart = -outgoingDelta;
-  const translateValue = (value) => `translateY(-50%) translateX(${value}px)`;
-
-  incomingTrack.style.transform = translateValue(incomingStart);
-  incomingTrack.offsetWidth;
-
-  const animationDuration = 520;
-  const animationOptions = {
-    duration: animationDuration,
-    easing: "cubic-bezier(0.22, 0.61, 0.36, 1)",
-    fill: "forwards",
-  };
-
-  track.style.opacity = "1";
-  incomingTrack.style.opacity = "1";
-
-  track.animate(
-    [
-      { transform: "translateY(-50%)", opacity: 1 },
-      { transform: translateValue(outgoingDelta), opacity: 0 },
-    ],
-    animationOptions,
-  );
-  incomingTrack.animate(
-    [
-      { transform: translateValue(incomingStart), opacity: 1 },
-      { transform: "translateY(-50%)", opacity: 1 },
-    ],
-    animationOptions,
-  );
-
-  view.wheelTrack = incomingTrack;
-  view.wheelTrackResetTimer = setTimeout(() => {
-    track.remove();
-    view.wheelTrackResetTimer = null;
-  }, animationDuration + 50);
+  // Keep seven image nodes and update them directly while browsing.
+  renderWheelCarousel(view.wheelTrack, currentTableIndex);
 }

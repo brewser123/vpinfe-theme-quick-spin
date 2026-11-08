@@ -46,12 +46,10 @@ function applyMediaRotation(element) {
 
 function updateHeroMedia(container, title) {
   const imageUrl = vpin.getImageURL(currentTableIndex, "table");
-  const videoUrl = vpin.getVideoURL(currentTableIndex, "table");
 
   const newFrame = document.createElement("div");
   newFrame.className = "hero-media-frame hero-media-layer is-entering";
   newFrame.dataset.imageUrl = imageUrl;
-  newFrame.dataset.videoUrl = videoUrl;
 
   let activated = false;
   const activateLayer = () => {
@@ -73,30 +71,12 @@ function updateHeroMedia(container, title) {
     });
   };
 
-  if (hasUsableMedia(videoUrl)) {
-    const video = document.createElement("video");
-    video.src = videoUrl;
-    if (hasUsableMedia(imageUrl)) video.poster = imageUrl;
-
-    video.autoplay = true;
-    video.loop = true;
-    video.muted = true;
-    video.playsInline = true;
-    video.className = "hero-media-asset";
-
-    video.onloadeddata = activateLayer;
-    video.onerror = () => {
-      const fallback = buildHeroImage(imageUrl, title);
-      newFrame.replaceChildren(fallback);
-      applyMediaRotation(fallback);
+  if (hasUsableMedia(imageUrl)) {
+    const image = buildHeroImage(imageUrl, title);
+    image.onload = () => {
+      image.classList.toggle("is-portrait", image.naturalHeight > image.naturalWidth);
       activateLayer();
     };
-
-    newFrame.appendChild(video);
-    applyMediaRotation(video);
-  } else if (hasUsableMedia(imageUrl)) {
-    const image = buildHeroImage(imageUrl, title);
-    image.onload = activateLayer;
     image.onerror = activateLayer;
     newFrame.appendChild(image);
     applyMediaRotation(image);

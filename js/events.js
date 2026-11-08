@@ -51,6 +51,7 @@ async function receiveEvent(message) {
       break;
 
     case "TableDataChange":
+      rebuildTableOrder();
       currentTableIndex = message.index;
       updateScreen();
       break;

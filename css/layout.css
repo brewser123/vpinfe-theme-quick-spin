@@ -12,10 +12,10 @@
     overflow: hidden;
 }
 
-/* Bottom overlay - two separate rows */
+/* Cabinet layout: top of the frame is the player's right side. */
 .bottom-overlay {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 10;
@@ -23,11 +23,11 @@
     flex-direction: column;
     gap: 0;
     padding: 0;
-    background: linear-gradient(to top,
+    background: linear-gradient(to bottom,
             rgba(0, 0, 0, 0.75) 0%,
             rgba(0, 0, 0, 0.5) 70%,
             transparent 100%);
-    backdrop-filter: blur(4px);
+    backdrop-filter: none;
 }
 
 /* Row 1: Carousel (fixed height) */
@@ -89,4 +89,19 @@
 .info-line:empty::after {
     content: '\00A0';
     /* Non-breaking space to maintain height */
+}
+
+#sortModeButton {
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 5px;
+    background: rgba(0,0,0,.65);
+    color: white;
+    padding: 4px 14px;
+    cursor: pointer;
+}
+
+/* Match the wheel-label orientation on the rotated cabinet playfield. */
+body.table-screen-cab .info-row {
+    transform: rotate(-90deg);
+    transform-origin: center center;
 }

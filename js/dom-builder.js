@@ -27,7 +27,7 @@ function ensureTableView(container) {
     // Row 1: Full-width carousel (fixed height)
     const carouselRow = document.createElement('div');
     carouselRow.className = 'carousel-row';
-    
+
     const carousel = document.createElement('div');
     carousel.className = 'wheel-carousel';
     const selectionHalo = document.createElement('div');
@@ -53,6 +53,13 @@ function ensureTableView(container) {
 
     bottomOverlay.appendChild(carouselRow);
     bottomOverlay.appendChild(infoRow);
+
+    const sortButton = document.createElement('button');
+    sortButton.id = 'sortModeButton';
+    sortButton.type = 'button';
+    sortButton.textContent = 'Most played (S)';
+    sortButton.addEventListener('click', toggleSortMode);
+    infoRow.appendChild(sortButton);
 
     shell.appendChild(heroMedia);
     shell.appendChild(bottomOverlay);

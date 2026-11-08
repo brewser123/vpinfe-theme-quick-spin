@@ -39,8 +39,6 @@ function updateTableWindowCarousel() {
       manufacturer && year ? "" : "none";
   }
 
-  lastRenderedTableIndex = currentTableIndex;
-  lastWheelMoveDirection = 0;
 }
 
 /**

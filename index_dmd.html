@@ -12,16 +12,28 @@
     <!-- Theme Modules (minimal set for DMD window) -->
     <script src="js/state.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/loading-image.js"></script>
     <script src="js/events.js"></script>
     <script src="js/bg-dmd-media.js"></script>
     <script src="js/dmd-window.js"></script>
 
     <!-- Main initialization (must load last) -->
-    <script src="js/main.js"></script>
+    <script src="theme.js"></script>
   </head>
   <body class="dmd-screen">
     <div id="rootContainer"></div>
-    <div id="fadeOverlay"></div>
+    <div id="fadeOverlay">
+      <div id="loading-message" style="display: none">
+        <div class="custom-loading-frame" hidden>
+          <img class="custom-loading-image" alt="Custom loading image" />
+        </div>
+        <div class="default-loading">
+          <div class="loading-spinner" aria-hidden="true"></div>
+          <div class="loading-text">Quick Spin</div>
+        </div>
+        <div id="loading-table-name"></div>
+      </div>
+    </div>
     <div id="overlay-root"></div>
   </body>
 </html>

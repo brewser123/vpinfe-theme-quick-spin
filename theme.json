@@ -1,0 +1,36 @@
+{
+  "title": "Quick Spin options",
+  "description": "Restart VPinFE after changing these settings.",
+  "options": [
+    {
+      "key": "loading_image",
+      "name": "Custom loading image",
+      "type": "text",
+      "description": "Filename inside this theme's img folder. PNG, JPG, WebP or GIF; at most 3 MiB, 1920 pixels per side and 2.1 million pixels total. Leave blank for the built-in loading screen.",
+      "default": "",
+      "value": ""
+    },
+    {
+      "key": "loading_rotation",
+      "name": "Loading image rotation",
+      "type": "select",
+      "description": "Rotate the custom image to match your cabinet. The theme fits the rotated image within the screen.",
+      "options": [
+        { "label": "Normal", "value": "0" },
+        { "label": "Clockwise 90°", "value": "90" },
+        { "label": "Upside down", "value": "180" },
+        { "label": "Counterclockwise 90°", "value": "270" }
+      ],
+      "default": "0",
+      "value": "0"
+    },
+    {
+      "key": "use_core_audio",
+      "name": "Use VPinFE frontend audio",
+      "type": "boolean",
+      "description": "Keep VPinFE's normal frontend audio handling enabled.",
+      "default": true,
+      "value": true
+    }
+  ]
+}

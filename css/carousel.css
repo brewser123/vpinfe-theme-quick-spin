@@ -39,15 +39,6 @@
     justify-content: center;
     gap: 1.5rem;
     padding: 0 3rem;
-    will-change: transform;
-}
-
-.wheel-track-transition {
-    pointer-events: none;
-}
-
-.wheel-track.is-scrolling {
-    transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .wheel-card {
@@ -59,9 +50,7 @@
     align-items: center;
     justify-content: center;
     opacity: 0.8;
-    transition:
-        transform 380ms cubic-bezier(0.22, 0.61, 0.36, 1),
-        opacity 380ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: none;
 }
 
 .wheel-card.active {
@@ -79,9 +68,7 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    transition:
-        opacity 380ms cubic-bezier(0.22, 0.61, 0.36, 1),
-        filter 380ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: none;
 }
 
 .wheel-card.active img,
@@ -95,4 +82,18 @@
     text-align: center;
     color: rgba(255, 255, 255, 0.75);
     text-shadow: 0 2px 6px rgba(255, 102, 42, 0.4);
+}
+
+/* Keep wheel logos upright on the physically rotated playfield panel. */
+body.table-screen-cab .wheel-card {
+    transform: rotate(-90deg);
+    transform-origin: center center;
+}
+
+body.table-screen-cab .wheel-card.active {
+    transform: rotate(-90deg) scale(1.2);
+}
+
+body.table-screen-cab .wheel-card.dim-near {
+    transform: rotate(-90deg) scale(1);
 }

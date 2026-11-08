@@ -86,6 +86,24 @@ body.dmd-screen #rootContainer {
     color: #fff;
 }
 
+.custom-loading-frame {
+    position: relative;
+    margin: 0 auto;
+}
+
+.custom-loading-image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    object-fit: contain;
+    transform-origin: center center;
+}
+
+.custom-loading-frame[hidden],
+.default-loading[hidden] {
+    display: none;
+}
+
 .loading-spinner {
     width: 80px;
     height: 80px;

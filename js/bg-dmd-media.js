@@ -40,7 +40,9 @@ function createMediaElement(
 
   let baseStyle;
   if (override) {
-    baseStyle = `position: absolute; left: ${override.x}px; top: ${override.y}px; width: ${override.width}px; height: ${override.height}px; object-fit: contain;`;
+    // The browser window has already been moved and sized from the override.
+    // Reusing its desktop x/y values inside the page puts the media offscreen.
+    baseStyle = "position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;";
   } else {
     baseStyle = `width: 100%; height: 100%; object-fit: ${objectFit};`;
   }

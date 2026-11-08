@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>VPinFE - Trifecta</title>
+    <title>VPinFE - Quick Spin</title>
     <link rel="stylesheet" href="/web/common/vpinfe-style.css" />
     <link rel="stylesheet" href="style.css" />
 
@@ -12,6 +12,7 @@
     <!-- Theme Modules (load in dependency order) -->
     <script src="js/state.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/loading-image.js"></script>
     <script src="js/layout.js"></script>
     <script src="js/input.js"></script>
     <script src="js/events.js"></script>
@@ -21,7 +22,7 @@
     <script src="js/table-window.js"></script>
 
     <!-- Main initialization (must load last) -->
-    <script src="js/main.js"></script>
+    <script src="theme.js"></script>
   </head>
   <body>
     <div id="tableViewport">
@@ -31,8 +32,13 @@
     </div>
     <div id="fadeOverlay">
       <div id="loading-message" style="display: none">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">Loading Table...</div>
+        <div class="custom-loading-frame" hidden>
+          <img class="custom-loading-image" alt="Custom loading image" />
+        </div>
+        <div class="default-loading">
+          <div class="loading-spinner" aria-hidden="true"></div>
+          <div class="loading-text">Quick Spin</div>
+        </div>
         <div id="loading-table-name"></div>
       </div>
     </div>

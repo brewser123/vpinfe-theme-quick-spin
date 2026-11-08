@@ -19,8 +19,7 @@ function startAutoAdvanceTimer() {
 function autoAdvance() {
   if (!isAutoAdvancing) return;
 
-  lastWheelMoveDirection = 1;
-  currentTableIndex = wrapIndex(currentTableIndex + 1, vpin.tableData.length);
+  currentTableIndex = moveTable(1);
 
   vpin.sendMessageToAllWindows({
     type: "TableIndexUpdate",
@@ -46,11 +45,7 @@ async function handleInput(input) {
 
   switch (input) {
     case "joyleft":
-      lastWheelMoveDirection = -1;
-      currentTableIndex = wrapIndex(
-        currentTableIndex - 1,
-        vpin.tableData.length,
-      );
+      currentTableIndex = moveTable(-1);
 
       vpin.sendMessageToAllWindows({
         type: "TableIndexUpdate",
@@ -60,11 +55,7 @@ async function handleInput(input) {
       break;
 
     case "joyright":
-      lastWheelMoveDirection = 1;
-      currentTableIndex = wrapIndex(
-        currentTableIndex + 1,
-        vpin.tableData.length,
-      );
+          currentTableIndex = moveTable(1);
 
       vpin.sendMessageToAllWindows({
         type: "TableIndexUpdate",
@@ -83,6 +74,7 @@ async function handleInput(input) {
       fadeOut();
 
       await vpin.launchTable(currentTableIndex);
+      rebuildTableOrder();
       isGameRunning = false;
 
       vpin.sendMessageToAllWindowsIncSelf({ type: "TableLaunchComplete" });

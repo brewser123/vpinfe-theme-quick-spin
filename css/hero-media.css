@@ -36,7 +36,7 @@
     position: absolute;
     inset: 0;
     opacity: 1;
-    transition: opacity 300ms ease-in-out;
+    transition: none;
 }
 
 .hero-media-layer.is-entering {
@@ -64,4 +64,20 @@
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/*
+ * Cabinet profile: playfield panel mounted sideways with a landscape
+ * framebuffer. Keep table snapshots upright on that display.
+ */
+body.table-screen-cab .hero-media-asset {
+    transform: rotate(180deg) !important;
+}
+
+body.table-screen-cab .hero-media-asset.is-portrait {
+    width: 56.25% !important;
+    height: 177.78% !important;
+    flex: 0 0 auto;
+    object-fit: contain !important;
+    transform: rotate(-90deg) !important;
 }
