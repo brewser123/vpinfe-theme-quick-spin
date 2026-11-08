@@ -5,6 +5,8 @@ Quick Spin is an image-first cabinet theme for VPinFE, forked from
 Trifecta's modular theme architecture and substantial original code remain in
 this derivative.
 
+![Quick Spin carousel showing Guardians of the Galaxy](preview.png)
+
 ## Overview
 
 Quick Spin shows a seven-logo wheel over still playfield artwork, with a
