@@ -15,6 +15,16 @@ can order games by play count or name. A custom PNG, JPG, WebP, or animated GIF
 can replace the loading indicator; the image can be rotated to suit the cabinet.
 The package includes no personal loading artwork.
 
+## Why Quick Spin exists
+
+Quick Spin was created for a virtual pinball cabinet built with older hardware
+and limited memory, CPU, and GPU capacity. The goal was to preserve the familiar
+look and cabinet-friendly layout of Trifecta while reducing the frontend work
+needed to browse tables on a rotated playfield. It favors still preview images,
+a simple wheel, and restrained transitions so navigation remains responsive on
+less powerful systems. It may also be useful to anyone who prefers a lighter,
+image-first frontend.
+
 ## What it does
 
 - Shows a persistent seven-logo wheel that responds immediately to navigation.
