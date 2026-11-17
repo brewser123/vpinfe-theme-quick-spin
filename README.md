@@ -64,11 +64,10 @@ are preferable because animation still takes CPU time while a table loads.
 
 ## Status
 
-Development release. Quick Spin has been run on one Linux two-display cabinet.
+Early release. Quick Spin has been run on one Linux two-display cabinet.
 Display rotation and wheel placement are currently tuned for a sideways-mounted
 playfield with a landscape framebuffer. Other cabinet layouts need testing and
-configuration options before a registry submission. Keep the original theme
-available as a fallback.
+configuration feedback. Keep the original theme available as a fallback.
 
 ## Files and installation
 
@@ -83,7 +82,7 @@ requirements: https://github.com/vpinfe/vpinfe/blob/master/docs/theme_publishing
 Based on Trifecta by emb417: https://github.com/emb417/vpinfe-theme-trifecta
 
 Quick Spin has no license file, matching the current Trifecta repository. A
-GitHub fork preserves the upstream relationship and attribution. Public GitHub
-availability allows viewing and forking through GitHub; it does not grant
-general reuse and redistribution rights. Before requesting a VPinFE registry
-listing that distributes installable copies, clarify those terms with emb417.
+GitHub fork preserves the upstream relationship and attribution. emb417 has
+approved distributing Quick Spin through the VPinFE theme registry. Public
+GitHub availability and registry installation do not grant additional reuse or
+redistribution rights beyond those permissions.
