@@ -1,10 +1,10 @@
 {
   "name": "Quick Spin",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "Quick Spin contributors (based on Trifecta by emb417)",
   "description": "Forked from Trifecta by emb417. Fast cabinet carousel with vertical or horizontal wheel layouts, still previews, most-played sorting, and optional rotated loading images or animated GIFs.",
   "preview_image": "preview.png",
   "supported_screens": 3,
   "type": "cab",
-  "change_log": "Added configurable keyboard and gamepad sort controls, including an optional both-flippers chord."
+  "change_log": "Added independent playfield and backglass/DMD rotation for custom loading images."
 }

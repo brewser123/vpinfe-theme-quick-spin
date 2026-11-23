@@ -42,6 +42,20 @@ function loadingImageRotation(value) {
   return [0, 90, 180, 270].includes(rotation) ? rotation : 0;
 }
 
+function loadingImageRotationForWindow() {
+  const playfieldRotation = loadingImageRotation(
+    vpin.themeConfig?.loading_rotation
+  );
+  if (windowName === "table") return playfieldRotation;
+
+  const secondaryRotation = String(
+    vpin.themeConfig?.loading_secondary_rotation ?? "same"
+  ).toLowerCase();
+  return secondaryRotation === "same" || secondaryRotation === ""
+    ? playfieldRotation
+    : loadingImageRotation(secondaryRotation);
+}
+
 function calculateLoadingImageFit(width, height, viewportWidth, viewportHeight, rotation) {
   const quarterTurn = rotation === 90 || rotation === 270;
   const rotatedWidth = quarterTurn ? height : width;
@@ -123,7 +137,7 @@ async function initLoadingImage() {
         URL.revokeObjectURL(objectUrl);
         return;
       }
-      const rotation = loadingImageRotation(vpin.themeConfig?.loading_rotation);
+      const rotation = loadingImageRotationForWindow();
       const fit = () => {
         const size = calculateLoadingImageFit(
           width, height, window.innerWidth, window.innerHeight, rotation

@@ -63,9 +63,9 @@
     },
     {
       "key": "loading_rotation",
-      "name": "Loading image rotation",
+      "name": "Playfield loading rotation",
       "type": "select",
-      "description": "Rotate the custom image to match your cabinet. The theme fits the rotated image within the screen.",
+      "description": "Rotate the custom image on the playfield to match your cabinet. The theme fits the rotated image within the screen.",
       "options": [
         { "label": "Normal", "value": "0" },
         { "label": "Clockwise 90°", "value": "90" },
@@ -74,6 +74,21 @@
       ],
       "default": "0",
       "value": "0"
+    },
+    {
+      "key": "loading_secondary_rotation",
+      "name": "Backglass/DMD loading rotation",
+      "type": "select",
+      "description": "Choose a separate rotation for the same loading image on the backglass and DMD, or follow the playfield setting.",
+      "options": [
+        { "label": "Same as playfield", "value": "same" },
+        { "label": "Normal", "value": "0" },
+        { "label": "Clockwise 90°", "value": "90" },
+        { "label": "Upside down", "value": "180" },
+        { "label": "Counterclockwise 90°", "value": "270" }
+      ],
+      "default": "same",
+      "value": "same"
     },
     {
       "key": "use_core_audio",

@@ -81,7 +81,9 @@ does not match the cabinet.
    it does not exist. Keep the filename simple, such as `my-loading.gif`.
 2. Set `loading_image` in `theme.json` to that **filename only**, without `img/`.
    Set `loading_rotation` to `0`, `90`, `180`, or `270` degrees if the image
-   needs turning. The labels in VPinFE's Configure screen spell out clockwise
+   needs turning on the playfield. Set `loading_secondary_rotation` to a
+   separate value for the backglass and DMD, or leave it on `same` to follow
+   the playfield. The labels in VPinFE's Configure screen spell out clockwise
    and counterclockwise directions.
    When Quick Spin is published in the VPinFE theme registry, the same option
    can be edited through the theme's Configure button in the browser Manager.

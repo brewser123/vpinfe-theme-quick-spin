@@ -10,7 +10,6 @@ window.vpin = vpin;
 window.receiveEvent = receiveEvent;
 
 vpin.ready.then(async () => {
-  initLoadingImage();
   const urlParams = new URLSearchParams(window.location.search);
   const overrideStr = urlParams.get("override");
   if (overrideStr) {
@@ -22,6 +21,7 @@ vpin.ready.then(async () => {
   await vpin.call("get_my_window_name").then((result) => {
     windowName = result;
   });
+  initLoadingImage();
 
   if (windowName === "table") {
     vpin.registerInputHandler(handleInput);
