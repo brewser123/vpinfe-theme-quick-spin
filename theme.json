@@ -15,6 +15,21 @@
       "value": "vertical"
     },
     {
+      "key": "wheel_mount_rotation",
+      "name": "Playfield mounting rotation",
+      "type": "select",
+      "description": "Correct the wheel for a physically rotated playfield panel without changing VPX or Ubuntu. Automatic supports the sideways cabinet layout Quick Spin was designed for.",
+      "options": [
+        { "label": "Automatic (sideways cabinet)", "value": "auto" },
+        { "label": "Normal", "value": "0" },
+        { "label": "Panel clockwise 90°", "value": "90" },
+        { "label": "Panel upside down", "value": "180" },
+        { "label": "Panel counterclockwise 90°", "value": "270" }
+      ],
+      "default": "auto",
+      "value": "auto"
+    },
+    {
       "key": "loading_image",
       "name": "Custom loading image",
       "type": "text",

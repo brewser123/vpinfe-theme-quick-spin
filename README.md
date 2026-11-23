@@ -45,6 +45,13 @@ layout** to either **Vertical side wheel** or **Horizontal bottom wheel**.
 Restart VPinFE after changing the setting. Vertical is the default so existing
 Quick Spin installations keep their current layout.
 
+If the playfield panel is physically mounted sideways while VPinFE reports a
+landscape screen with rotation 0, leave **Playfield mounting rotation** on
+**Automatic (sideways cabinet)**. Quick Spin then maps the wheel to the physical
+edge and counter-rotates its logos and labels. Select **Normal** for an
+unrotated panel, or choose an explicit quarter-turn when automatic placement
+does not match the cabinet.
+
 ## Custom loading image
 
 1. Copy your image into this theme's `img/` directory. Create the directory if
@@ -91,7 +98,7 @@ need configuration feedback. Keep the original theme available as a fallback.
 Quick Spin intentionally remains a VPinFE Contract 1 theme. It uses the launch
 lifecycle and APIs shared by VPinFE 2.6 and the 3.0 compatibility layer, so the
 same release can support current 2.x cabinets and a later 3.0 upgrade. Version
-0.3.0 has been checked statically against the 3.0 Contract 1 documentation but
+0.3.1 has been checked statically against the 3.0 Contract 1 documentation but
 has not been run on VPinFE 3.0 beta; the cabinet remains on its current release.
 
 ## Files and installation

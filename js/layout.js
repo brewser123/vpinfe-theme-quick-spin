@@ -9,6 +9,23 @@ function normalizeWheelOrientation(value) {
     : "vertical";
 }
 
+function normalizeQuarterTurn(value, fallback = 0) {
+  const parsed = Number(value);
+  const normalized = ((parsed % 360) + 360) % 360;
+  return [0, 90, 180, 270].includes(normalized) ? normalized : fallback;
+}
+
+function resolveWheelMountRotation(value, cabMode, orientation, vpinRotation) {
+  if (String(value ?? "auto").toLowerCase() !== "auto") {
+    return normalizeQuarterTurn(value);
+  }
+
+  // Quick Spin's original cabinet target uses a landscape framebuffer on a
+  // playfield panel mounted clockwise. VPinFE reports rotation 0 there, so
+  // compensate in the theme without changing VPX or the operating system.
+  return cabMode && orientation === "landscape" && vpinRotation === 0 ? 90 : 0;
+}
+
 function resolveWheelLayout(orientation, rotationDegrees) {
   const physicalOrientation = normalizeWheelOrientation(orientation);
   const rotation = ((Number(rotationDegrees) % 360) + 360) % 360;
@@ -72,15 +89,24 @@ async function applyTableLayout() {
   tableRotationDegrees = rotationDegree;
   const normalized = ((rotationDegree % 360) + 360) % 360;
   const swapAxes = normalized === 90 || normalized === 270;
+  const mountRotation = resolveWheelMountRotation(
+    vpin.themeConfig?.wheel_mount_rotation,
+    Boolean(cabMode),
+    orientation,
+    normalized
+  );
+  const wheelLayoutRotation = (normalized + mountRotation) % 360;
+  const wheelSwapAxes =
+    wheelLayoutRotation === 90 || wheelLayoutRotation === 270;
   // Portrait display pre-rotated by the OS: the window is already portrait
   // and rotation is 0, so lay out portrait natively without rotating.
   isNativePortrait = orientation === "portrait" && normalized === 0;
   isTablePortrait = swapAxes || isNativePortrait;
-  applyWheelLayoutClasses(normalized);
-  document.body.classList.toggle("table-surface-rotated", swapAxes);
+  applyWheelLayoutClasses(wheelLayoutRotation);
+  document.body.classList.toggle("table-surface-rotated", wheelSwapAxes);
   document.body.style.setProperty(
     "--quick-spin-counter-rotation",
-    `${-Number(rotationDegree || 0)}deg`
+    `${-wheelLayoutRotation}deg`
   );
 
   const vw = window.innerWidth;
