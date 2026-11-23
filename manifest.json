@@ -1,10 +1,10 @@
 {
   "name": "Quick Spin",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Quick Spin contributors (based on Trifecta by emb417)",
   "description": "Forked from Trifecta by emb417. Fast cabinet carousel with vertical or horizontal wheel layouts, still previews, most-played sorting, and optional rotated loading images or animated GIFs.",
   "preview_image": "preview.png",
   "supported_screens": 3,
   "type": "cab",
-  "change_log": "Added a playfield mounting-rotation correction so horizontal and vertical wheels align on physically rotated cabinet panels."
+  "change_log": "Centered table details beneath the selected logo in horizontal wheel mode."
 }

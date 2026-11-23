@@ -45,6 +45,10 @@ layout** to either **Vertical side wheel** or **Horizontal bottom wheel**.
 Restart VPinFE after changing the setting. Vertical is the default so existing
 Quick Spin installations keep their current layout.
 
+Horizontal mode centers the table title, manufacturer, year, and sort control
+beneath the selected wheel image instead of placing them at the end of the
+carousel.
+
 If the playfield panel is physically mounted sideways while VPinFE reports a
 landscape screen with rotation 0, leave **Playfield mounting rotation** on
 **Automatic (sideways cabinet)**. Quick Spin then maps the wheel to the physical

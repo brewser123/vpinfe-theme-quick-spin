@@ -162,3 +162,35 @@ body.wheel-axis-column .year {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/*
+ * In a physical horizontal layout, keep the carousel centered across the
+ * cabinet and anchor the description beneath the selected logo instead of at
+ * the far end of the virtual column.
+ */
+body.wheel-orientation-horizontal.wheel-axis-column .carousel-row {
+    position: absolute;
+    inset: 0;
+}
+
+body.wheel-orientation-horizontal.wheel-axis-column .info-row {
+    position: absolute;
+    top: 50%;
+    width: 216px;
+    min-height: 100px;
+    margin: 0;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+body.wheel-orientation-horizontal.wheel-axis-column.wheel-edge-right .info-row {
+    left: 79%;
+}
+
+body.wheel-orientation-horizontal.wheel-axis-column.wheel-edge-left .info-row {
+    left: 21%;
+}
+
+body.table-surface-rotated.wheel-orientation-horizontal.wheel-axis-column .info-row {
+    transform: translate(-50%, -50%) rotate(var(--quick-spin-counter-rotation));
+}

@@ -132,3 +132,14 @@ body.wheel-axis-column .wheel-card {
     width: 112px;
     height: 112px;
 }
+
+/* Leave room below the selected horizontal logo for its centered details. */
+body.wheel-orientation-horizontal.wheel-axis-column.wheel-edge-right .wheel-track,
+body.wheel-orientation-horizontal.wheel-axis-column.wheel-edge-right .wheel-selection-halo {
+    left: 37.5%;
+}
+
+body.wheel-orientation-horizontal.wheel-axis-column.wheel-edge-left .wheel-track,
+body.wheel-orientation-horizontal.wheel-axis-column.wheel-edge-left .wheel-selection-halo {
+    left: 62.5%;
+}
