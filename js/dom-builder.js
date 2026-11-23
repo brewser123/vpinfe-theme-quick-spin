@@ -20,11 +20,11 @@ function ensureTableView(container) {
     const heroMedia = document.createElement('div');
     heroMedia.className = 'hero-media';
 
-    // Bottom overlay with two distinct rows
+    // Configurable wheel overlay with carousel and information regions
     const bottomOverlay = document.createElement('div');
     bottomOverlay.className = 'bottom-overlay';
 
-    // Row 1: Full-width carousel (fixed height)
+    // Carousel region (row or column, depending on the configured layout)
     const carouselRow = document.createElement('div');
     carouselRow.className = 'carousel-row';
 
@@ -37,7 +37,7 @@ function ensureTableView(container) {
     carousel.appendChild(wheelTrack);
     carouselRow.appendChild(carousel);
 
-    // Row 2: Info in 3 centered rows
+    // Information region
     const infoRow = document.createElement('div');
     infoRow.className = 'info-row';
     infoRow.innerHTML = `

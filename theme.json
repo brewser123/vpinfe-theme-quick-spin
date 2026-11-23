@@ -3,6 +3,18 @@
   "description": "Restart VPinFE after changing these settings.",
   "options": [
     {
+      "key": "wheel_orientation",
+      "name": "Wheel layout",
+      "type": "select",
+      "description": "Choose the wheel's physical cabinet layout. Vertical runs down the right side; Horizontal runs across the bottom.",
+      "options": [
+        { "label": "Vertical side wheel", "value": "vertical" },
+        { "label": "Horizontal bottom wheel", "value": "horizontal" }
+      ],
+      "default": "vertical",
+      "value": "vertical"
+    },
+    {
       "key": "loading_image",
       "name": "Custom loading image",
       "type": "text",

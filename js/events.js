@@ -15,16 +15,25 @@ async function receiveEvent(message) {
       break;
 
     case "TableLaunching":
+      if (typeof stopAutoAdvanceTimer === "function") {
+        stopAutoAdvanceTimer();
+      }
       fadeOut();
       if (windowName !== "table") {
         cleanupAllMedia();
       }
       break;
 
-    case "TableLaunchComplete":
+    case "TableRunning":
       fadeIn();
-      if (windowName !== "table") {
-        updateScreen();
+      break;
+
+    case "TableLaunchComplete":
+      rebuildTableOrder();
+      fadeIn();
+      updateScreen();
+      if (windowName === "table" && typeof startAutoAdvanceTimer === "function") {
+        startAutoAdvanceTimer();
       }
       break;
 
@@ -35,14 +44,15 @@ async function receiveEvent(message) {
       if (windowName === "table") {
         showRemoteLaunchOverlay(message.table_name);
       }
+      cleanupAllMedia();
       fadeOut();
-      updateScreen();
       break;
 
     case "RemoteLaunchComplete":
       if (windowName === "table") {
         hideRemoteLaunchOverlay();
       }
+      rebuildTableOrder();
       fadeIn();
       updateScreen();
       if (typeof startAutoAdvanceTimer === "function") {

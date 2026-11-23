@@ -69,19 +69,13 @@ async function handleInput(input) {
       if (typeof stopAutoAdvanceTimer === "function") {
         stopAutoAdvanceTimer();
       }
-      vpin.sendMessageToAllWindowsIncSelf({ type: "TableLaunching" });
       cleanupAllMedia();
       fadeOut();
 
-      await vpin.launchTable(currentTableIndex);
-      rebuildTableOrder();
-      isGameRunning = false;
-
-      vpin.sendMessageToAllWindowsIncSelf({ type: "TableLaunchComplete" });
-      fadeIn();
-      updateScreen();
-      if (typeof startAutoAdvanceTimer === "function") {
-        startAutoAdvanceTimer();
+      try {
+        await vpin.launchTable(currentTableIndex);
+      } finally {
+        isGameRunning = false;
       }
       break;
 

@@ -13,6 +13,7 @@ let currentTableIndex = 0;
 let isTablePortrait = false;
 let tableRotationDegrees = 0;
 let isNativePortrait = false;
+let wheelOrientation = "vertical";
 
 // Configuration
 let windowOverride = null;

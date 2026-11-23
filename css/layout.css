@@ -1,6 +1,6 @@
 /**
  * Layout
- * Full-screen media with two-row bottom overlay
+ * Full-screen media with a configurable wheel overlay
  */
 
 .table-shell {
@@ -101,7 +101,64 @@
 }
 
 /* Match the wheel-label orientation on the rotated cabinet playfield. */
-body.table-screen-cab .info-row {
-    transform: rotate(-90deg);
+body.table-surface-rotated .info-row {
+    transform: rotate(var(--quick-spin-counter-rotation));
     transform-origin: center center;
+}
+
+/* Unrotated landscape and portrait screens place the horizontal wheel below. */
+body.wheel-edge-bottom .bottom-overlay {
+    top: auto;
+    bottom: 0;
+}
+
+/*
+ * On the cabinet's rotated virtual surface, the right edge becomes the
+ * player's bottom edge. This column therefore renders as a horizontal wheel.
+ */
+body.wheel-axis-column .bottom-overlay {
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 240px;
+    flex-direction: column;
+    background: linear-gradient(to left,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.5) 70%,
+            transparent 100%);
+}
+
+body.wheel-axis-column.wheel-edge-left .bottom-overlay {
+    left: 0;
+    right: auto;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.5) 70%,
+            transparent 100%);
+}
+
+body.wheel-axis-column .carousel-row {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+body.wheel-axis-column .info-row {
+    flex: 0 0 auto;
+    min-height: 100px;
+    max-width: 216px;
+    padding: 0.75rem;
+    margin-bottom: 60px;
+}
+
+body.wheel-axis-column .info-line {
+    max-width: 100%;
+}
+
+body.wheel-axis-column .table-title,
+body.wheel-axis-column .manufacturer,
+body.wheel-axis-column .year {
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

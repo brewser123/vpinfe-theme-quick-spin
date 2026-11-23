@@ -69,6 +69,7 @@ function fadeOut() {
         loadingMsg.style.transform = `rotate(${tableRotationDegrees}deg)`;
       }
       loadingMsg.style.display = "block";
+      restartLoadingSpinner(loadingMsg);
 
       const loadingName = document.getElementById("loading-table-name");
       if (loadingName && typeof currentTableIndex !== "undefined") {
@@ -84,6 +85,14 @@ function fadeOut() {
     }
     overlay.classList.add("show");
   }
+}
+
+function restartLoadingSpinner(container) {
+  const spinner = container?.querySelector(".loading-spinner");
+  if (!spinner) return;
+  spinner.style.animation = "none";
+  void spinner.offsetWidth;
+  spinner.style.animation = "";
 }
 
 function fadeIn() {

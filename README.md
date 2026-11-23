@@ -13,7 +13,8 @@ Quick Spin shows a seven-logo wheel over still playfield artwork, with a
 matching backglass preview while browsing. It prioritizes quick scrolling and
 can order games by play count or name. A custom PNG, JPG, WebP, or animated GIF
 can replace the loading indicator; the image can be rotated to suit the cabinet.
-The package includes no personal loading artwork.
+The wheel can run vertically down the right side or horizontally across the
+bottom of the playfield. The package includes no personal loading artwork.
 
 ## Why Quick Spin exists
 
@@ -31,11 +32,18 @@ image-first frontend.
 - Uses still playfield and backglass images during browsing to reduce decoding work.
 - Sorts by most-played count, with an A–Z toggle using **S** or the on-screen button.
 - Automatically advances through tables when left idle.
-- Keeps the wheel and table details at the player's right edge on the cabinet
-  layout used for initial development.
+- Offers a vertical wheel at the player's right edge or a horizontal wheel
+  across the bottom of the playfield.
 - Uses a plain loading indicator by default, with an optional custom image.
   No personal loading artwork or playable table files are bundled. The theme
   preview is a screenshot of the Guardians of the Galaxy carousel.
+
+## Wheel layout
+
+Open Quick Spin's Configure screen in the VPinFE Manager, then set **Wheel
+layout** to either **Vertical side wheel** or **Horizontal bottom wheel**.
+Restart VPinFE after changing the setting. Vertical is the default so existing
+Quick Spin installations keep their current layout.
 
 ## Custom loading image
 
@@ -75,9 +83,16 @@ are preferable because animation still takes CPU time while a table loads.
 ## Status
 
 Early release. Quick Spin has been run on one Linux two-display cabinet.
-Display rotation and wheel placement are currently tuned for a sideways-mounted
-playfield with a landscape framebuffer. Other cabinet layouts need testing and
-configuration feedback. Keep the original theme available as a fallback.
+Display rotation and wheel placement are tuned first for a sideways-mounted
+playfield with a landscape framebuffer. Both wheel layouts should also map to
+their physical orientation on an unrotated display, but other cabinet layouts
+need configuration feedback. Keep the original theme available as a fallback.
+
+Quick Spin intentionally remains a VPinFE Contract 1 theme. It uses the launch
+lifecycle and APIs shared by VPinFE 2.6 and the 3.0 compatibility layer, so the
+same release can support current 2.x cabinets and a later 3.0 upgrade. Version
+0.3.0 has been checked statically against the 3.0 Contract 1 documentation but
+has not been run on VPinFE 3.0 beta; the cabinet remains on its current release.
 
 ## Files and installation
 

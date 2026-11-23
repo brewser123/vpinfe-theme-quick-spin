@@ -3,6 +3,60 @@
  * Handles screen rotation and scaling for table window
  */
 
+function normalizeWheelOrientation(value) {
+  return String(value || "").toLowerCase() === "horizontal"
+    ? "horizontal"
+    : "vertical";
+}
+
+function resolveWheelLayout(orientation, rotationDegrees) {
+  const physicalOrientation = normalizeWheelOrientation(orientation);
+  const rotation = ((Number(rotationDegrees) % 360) + 360) % 360;
+  const layouts = {
+    0: {
+      vertical: { axis: "column", edge: "right" },
+      horizontal: { axis: "row", edge: "bottom" },
+    },
+    90: {
+      vertical: { axis: "row", edge: "top" },
+      horizontal: { axis: "column", edge: "right" },
+    },
+    180: {
+      vertical: { axis: "column", edge: "left" },
+      horizontal: { axis: "row", edge: "top" },
+    },
+    270: {
+      vertical: { axis: "row", edge: "bottom" },
+      horizontal: { axis: "column", edge: "left" },
+    },
+  };
+  if (layouts[rotation]) {
+    return layouts[rotation][physicalOrientation];
+  }
+  return layouts[0][physicalOrientation];
+}
+
+function applyWheelLayoutClasses(rotationDegrees) {
+  wheelOrientation = normalizeWheelOrientation(
+    vpin.themeConfig?.wheel_orientation
+  );
+  const layout = resolveWheelLayout(wheelOrientation, rotationDegrees);
+  document.body.classList.toggle(
+    "wheel-orientation-vertical",
+    wheelOrientation === "vertical"
+  );
+  document.body.classList.toggle(
+    "wheel-orientation-horizontal",
+    wheelOrientation === "horizontal"
+  );
+  document.body.classList.toggle("wheel-axis-row", layout.axis === "row");
+  document.body.classList.toggle("wheel-axis-column", layout.axis === "column");
+  document.body.classList.toggle("wheel-edge-top", layout.edge === "top");
+  document.body.classList.toggle("wheel-edge-left", layout.edge === "left");
+  document.body.classList.toggle("wheel-edge-right", layout.edge === "right");
+  document.body.classList.toggle("wheel-edge-bottom", layout.edge === "bottom");
+}
+
 async function applyTableLayout() {
   if (windowName !== "table") return;
 
@@ -22,6 +76,12 @@ async function applyTableLayout() {
   // and rotation is 0, so lay out portrait natively without rotating.
   isNativePortrait = orientation === "portrait" && normalized === 0;
   isTablePortrait = swapAxes || isNativePortrait;
+  applyWheelLayoutClasses(normalized);
+  document.body.classList.toggle("table-surface-rotated", swapAxes);
+  document.body.style.setProperty(
+    "--quick-spin-counter-rotation",
+    `${-Number(rotationDegree || 0)}deg`
+  );
 
   const vw = window.innerWidth;
   const vh = window.innerHeight;

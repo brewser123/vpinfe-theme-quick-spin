@@ -1,6 +1,6 @@
 /**
  * Carousel
- * Full-width horizontal wheel carousel
+ * Wheel carousel for horizontal and vertical virtual-screen layouts
  */
 
 .wheel-carousel {
@@ -85,15 +85,50 @@
 }
 
 /* Keep wheel logos upright on the physically rotated playfield panel. */
-body.table-screen-cab .wheel-card {
-    transform: rotate(-90deg);
+body.table-surface-rotated .wheel-card {
+    transform: rotate(var(--quick-spin-counter-rotation));
     transform-origin: center center;
 }
 
-body.table-screen-cab .wheel-card.active {
-    transform: rotate(-90deg) scale(1.2);
+body.table-surface-rotated .wheel-card.active {
+    transform: rotate(var(--quick-spin-counter-rotation)) scale(1.2);
 }
 
-body.table-screen-cab .wheel-card.dim-near {
-    transform: rotate(-90deg) scale(1);
+body.table-surface-rotated .wheel-card.dim-near {
+    transform: rotate(var(--quick-spin-counter-rotation)) scale(1);
+}
+
+/*
+ * A physically horizontal wheel on a rotated playfield is a column on the
+ * virtual screen. Rotating the whole surface turns this right-side column
+ * into a bottom row while the card counter-rotation keeps logos upright.
+ */
+body.wheel-axis-column .wheel-carousel {
+    width: 240px;
+    height: 100%;
+}
+
+body.wheel-axis-column .wheel-selection-halo {
+    top: 50%;
+    left: 50%;
+    width: 85%;
+    height: 100px;
+}
+
+body.wheel-axis-column .wheel-track {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    width: 90%;
+    height: auto;
+    transform: translateX(-50%);
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 2rem 0;
+}
+
+body.wheel-axis-column .wheel-card {
+    width: 112px;
+    height: 112px;
 }
