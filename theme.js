@@ -26,10 +26,11 @@ vpin.ready.then(async () => {
   if (windowName === "table") {
     vpin.registerInputHandler(handleInput);
     window.addEventListener("keydown", (event) => {
-      if (event.key.toLowerCase() === "s" && !event.repeat) {
+      if (configuredSortKeyMatches(event)) {
         toggleSortMode();
       }
     });
+    startSortControlWatcher();
     await applyTableLayout();
     window.addEventListener("resize", () => {
       applyTableLayout().then(() => {

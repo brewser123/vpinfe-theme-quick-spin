@@ -30,7 +30,8 @@ image-first frontend.
 
 - Shows a persistent seven-logo wheel that responds immediately to navigation.
 - Uses still playfield and backglass images during browsing to reduce decoding work.
-- Sorts by most-played count, with an A–Z toggle using **S** or the on-screen button.
+- Sorts by most-played count, with an A–Z toggle using both cabinet flippers,
+  a configurable keyboard or gamepad button, or the on-screen button.
 - Automatically advances through tables when left idle.
 - Offers a vertical wheel at the player's right edge or a horizontal wheel
   across the bottom of the playfield.
@@ -48,6 +49,24 @@ Quick Spin installations keep their current layout.
 Horizontal mode centers the table title, manufacturer, year, and sort control
 beneath the selected wheel image instead of placing them at the end of the
 carousel.
+
+## Sort controls
+
+By default, press both VPinFE browsing flippers together to switch between
+**Most played** and **A–Z**. A single flipper press still moves the wheel
+immediately. The default keyboard shortcut is **S**.
+
+Quick Spin's Configure screen provides three related options:
+
+- **Sort keyboard key** accepts a browser key or code such as `s`, `F8`, or
+  `KeyS`. Leave it blank to disable the keyboard shortcut.
+- **Sort with both flippers** enables or disables the cabinet chord.
+- **Sort gamepad button** accepts a browser Gamepad API button index for a
+  dedicated sort button. Use a spare button that is not assigned another
+  VPinFE action; leave it blank to disable it. VPinFE's gamepad diagnostic can
+  identify the correct index, which may differ from a VPX/SDL button number.
+
+Restart VPinFE after changing these settings.
 
 If the playfield panel is physically mounted sideways while VPinFE reports a
 landscape screen with rotation 0, leave **Playfield mounting rotation** on

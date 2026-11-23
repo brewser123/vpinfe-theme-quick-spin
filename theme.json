@@ -30,6 +30,30 @@
       "value": "auto"
     },
     {
+      "key": "sort_keyboard_key",
+      "name": "Sort keyboard key",
+      "type": "text",
+      "description": "Keyboard key used to toggle Most Played and A-Z. Enter a browser key or code such as s, F8 or KeyS. Leave blank to disable it.",
+      "default": "s",
+      "value": "s"
+    },
+    {
+      "key": "sort_flipper_chord",
+      "name": "Sort with both flippers",
+      "type": "boolean",
+      "description": "Press the two VPinFE browsing flippers together to toggle Most Played and A-Z. Single flippers continue to browse normally.",
+      "default": true,
+      "value": true
+    },
+    {
+      "key": "sort_gamepad_button",
+      "name": "Sort gamepad button",
+      "type": "text",
+      "description": "Optional browser Gamepad API button index for a dedicated sort button, such as 6. Use a spare button that is not assigned another VPinFE action. Leave blank to disable it.",
+      "default": "",
+      "value": ""
+    },
+    {
       "key": "loading_image",
       "name": "Custom loading image",
       "type": "text",

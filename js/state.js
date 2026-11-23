@@ -22,6 +22,9 @@ let windowOverride = null;
 let heroUpdateDebounceTimer = null;
 let tableOrder = [];
 let sortMode = "plays";
+let sortControlFrame = null;
+let sortControlWasPressed = false;
+let sortControlBindings = null;
 
 function rebuildTableOrder() {
   const count = vpin.tableData?.length || 0;
@@ -44,7 +47,7 @@ function toggleSortMode() {
   sortMode = sortMode === "plays" ? "alphabetical" : "plays";
   rebuildTableOrder();
   const button = document.getElementById("sortModeButton");
-  if (button) button.textContent = sortMode === "plays" ? "Most played (S)" : "A–Z (S)";
+  if (button) button.textContent = sortMode === "plays" ? "Most played" : "A–Z";
   if (windowName === "table") updateTableWindowCarousel();
 }
 

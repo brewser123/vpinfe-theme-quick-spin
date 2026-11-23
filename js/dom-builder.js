@@ -57,7 +57,7 @@ function ensureTableView(container) {
     const sortButton = document.createElement('button');
     sortButton.id = 'sortModeButton';
     sortButton.type = 'button';
-    sortButton.textContent = 'Most played (S)';
+    sortButton.textContent = 'Most played';
     sortButton.addEventListener('click', toggleSortMode);
     infoRow.appendChild(sortButton);
 
